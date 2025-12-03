@@ -1,0 +1,14 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+.header {
+  background-color: #333; /* Dark background color */
+  color: white; /* White text color for content within the header */
+  padding: 15px 20px; /* Padding around the content */
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Distribute items with space between them */
+  align-items: center; /* Vertically align items in the center */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
