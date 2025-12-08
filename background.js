@@ -24,17 +24,14 @@ input.addEventListener('input', function () {
   var matchesCount = 0;
   var i;
 
-  // Manually search for up to 5 matching players
   for (i = 0; i < playersData.length; i++) {
     var nameLower = playersData[i].Name.toLowerCase();
 
-    // Basic substring check instead of .includes()
     if (nameLower.indexOf(value) !== -1) {
       var option = document.createElement('div');
       option.className = 'dropdown-item';
       option.textContent = playersData[i].Name;
 
-      // Capture the name for the click handler
       (function(playerName) {
         option.addEventListener('click', function () {
           showPlayer(playerName);
@@ -46,7 +43,7 @@ input.addEventListener('input', function () {
 
       matchesCount++;
       if (matchesCount === 5) {
-        break; // stop after 5 matches
+        break; 
       }
     }
   }
