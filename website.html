@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lorem Ipsum</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soccer Players</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="wrapper">
-        <h1>FIFA 26</h1>
-        <p>
 
-        </p>
-        <p>
-          A fifa website containing a database of all fifa 26 players, where you can select a player and view there skill moves, play style, height, weight, strong foot, weak foot, nationality, pace, shooting, 
-        </p>
-    </div>
+<header>
+    <input type="text" id="player-input" placeholder="Search player name">
+    <div id="dropdown" class="dropdown"></div>
+</header>
+
+<div id="player-box">Select a player to see their stats here</div>
+
+<table id="all-players"></table>
+
+<script src="background.js"></script>
 </body>
 </html>
