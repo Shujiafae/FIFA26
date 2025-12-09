@@ -1,6 +1,6 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('images/DOUE.png');
+    background-image: url('images/EAFC26.jpg');
     background-size: cover; 
     background-repeat: no-repeat; 
     background-position: center center;
@@ -33,6 +33,36 @@ header {
     box-shadow: 0 0 25px rgba(0, 123, 255, 0.9);
 }
 
+.floating-glowing-3d-box {
+  background-image: url('images/NeymarSantos.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  top: 140px;
+  left: 950px;
+  width: 267px;
+  height: 170px;
+  border-radius: 8px;
+  position: relative; 
+  transform-style: preserve-3d; 
+  box-shadow:
+  
+    5px 5px 15px rgba(0, 0, 0, 0.3), 
+    15px 15px 30px rgba(0, 0, 0, 0.2),
+    25px 25px 50px rgba(0, 0, 0, 0.1); 
+  
+
+  filter: drop-shadow(0 0 10px rgba(52, 152, 219, 0.8)) 
+          drop-shadow(0 0 20px rgba(52, 152, 219, 0.5)); 
+
+  animation: float 3s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  0% { transform: translateZ(0) translateY(0) rotateX(10deg) rotateY(-15deg); }
+  100% { transform: translateZ(20px) translateY(-20px) rotateX(12deg) rotateY(-17deg); }
+}
 
 
 

@@ -1,4 +1,3 @@
-// Store all players from the JSON file
 var playersData = [];
 
 fetch('FIFA20.json')
