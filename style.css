@@ -1,12 +1,58 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-image: url('images/EAFC26.jpg');
     background-size: cover; 
     background-repeat: no-repeat; 
     background-position: center top;
     min-height: 100vh; 
     margin: 0; 
+    justify-content: center;
+    align-items: center;
 }
+
+.center-container {
+    text-align: center;
+}
+.italiano-text {
+    font-family: 'Monsieur La Doulaise', cursive;
+    color: #fff;
+    font-size: 5vw; 
+    margin: 0; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0);
+    position: absolute;
+    top: 240px;
+    left: 350px;
+
+    text-shadow:
+      0 0 8px rgba(255, 255, 255, .9),
+      0 0 16px rgba(255, 255, 255, .6),
+      0 0 24px rgba(0, 150, 255, .8);
+
+      animation: fadeGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes fadeGlow {
+  0% {
+    opacity = 0.2;
+    text-shadow:
+    0 0 4px rgba(255, 255, 255, .3)
+    0 0 8px rgba(0, 150, 255, .3)
+  }
+
+  50% {
+    opacity = 0.2;
+    text-shadow:
+    0 0 4px rgba(255, 255, 255, .3)
+    0 0 8px rgba(0, 150, 255, .3)
+  }
+
+  100% {
+    opacity = 0.2;
+    text-shadow:
+    0 0 4px rgba(255, 255, 255, .3)
+    0 0 8px rgba(0, 150, 255, .3)
+  }
+}
+
 
 header {
     display: flex;
@@ -39,8 +85,8 @@ header {
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-  top: 92px;
-  left: 950px;
+  top: 150px;
+  left: 970px;
   width: 267px;
   height: 290px;
   border-radius: 16px;
@@ -83,13 +129,13 @@ header {
   filter: drop-shadow(0 0 10px rgba(52, 152, 219, 0.8)) 
           drop-shadow(0 0 20px rgba(52, 152, 219, 0.5)); 
   animation:
-    animation1 1s ease-in-out infinite alternate,
-    animation2 1s ease-in-out infinite alternate;
+    animation1 3s ease-in-out infinite alternate,
+    animation2 3s ease-in-out infinite alternate;
 }
 
 @keyframes animation1 {
-  0% { transform: translateZ(0) translateY(0) rotateX(10deg) rotateY(-15deg); }
-  100% { transform: translateZ(40px) translateY(-40px) rotateX(60deg) rotateY(-60deg); }
+  0% { transform: translateZ(0) translateY(0) rotateX(5deg) rotateY(-5deg); }
+  100% { transform: translateZ(40px) translateY(-40px) rotateX(15deg) rotateY(-15deg); }
 }
 
 @keyframes animation2 {
