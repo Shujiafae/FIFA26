@@ -49,4 +49,30 @@ input.addEventListener('input', function () {
 });
 
 function showPlayer(playerName) {
+    playerBox.innerHTML = ''; 
+
+    var player = playersData.find(function(p) {
+        return p.Name === playerName;
+    });
+
+    if (player) {
+        var nameElem = document.createElement('h2');
+        nameElem.textContent = player.Name;
+
+        var clubElem = document.createElement('p');
+        clubElem.textContent = 'Club: ' + (player.Club || 'N/A'); 
+
+        var ratingElem = document.createElement('p');
+        ratingElem.textContent = 'Overall Rating: ' + (player.Overall || player.Rating || 'N/A');
+
+        playerBox.appendChild(nameElem);
+        playerBox.appendChild(clubElem);
+        playerBox.appendChild(ratingElem);
+        
+        input.value = '';
+
+    } else {
+        playerBox.innerHTML = '<p>Player not found.</p>';
+    }
 }
+
