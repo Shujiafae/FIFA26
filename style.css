@@ -1,14 +1,83 @@
 body {
     background-image: url('images/EAFC26.jpg');
-    background-size: cover; 
-    background-repeat: no-repeat; 
+    background-size: cover;
+    background-repeat: no-repeat;
     background-position: center top;
-    min-height: 100vh; 
-    margin: 0; 
-    justify-content: center;
-    align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
+/* ===== Header ===== */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 0;
+    background: rgba(0, 0, 0, 0.65);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+/* ===== Search Container (anchors dropdown) ===== */
+.search-container {
+    position: relative;
+    width: 520px;
+}
+
+/* ===== Search Input ===== */
+#player-input {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 32px;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+/* Input glow on focus */
+#player-input:focus {
+    box-shadow: 0 0 25px rgba(0, 123, 255, 0.9);
+}
+
+/* Search container */
+.search-container {
+    position: relative;
+    width: 400px;
+}
+
+/* Dropdown box */
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ccc;
+    z-index: 1000;
+}
+
+/* Dropdown items */
+.dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    color: black;
+    border-bottom: 1px solid #eee;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background: #f2f2f2;
+}
+
+
+/* ===== Center Text ===== */
 .center-container {
     text-align: center;
 }
@@ -37,7 +106,6 @@ body {
             0 0 4px rgba(255, 255, 255, 0.3),
             0 0 8px rgba(0, 150, 255, 0.3);
     }
-
     50% {
         opacity: 0.75;
         text-shadow:
@@ -45,7 +113,6 @@ body {
             0 0 20px rgba(0, 150, 255, 0.5),
             0 0 30px rgba(0, 150, 255, 0.4);
     }
-
     100% {
         opacity: 1;
         text-shadow:
@@ -55,32 +122,7 @@ body {
     }
 }
 
-
-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 25px 0;
-    background: rgba(0, 0, 0, 0.65);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-    z-index: 100;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
-}
-
-#player-input {
-    padding: 14px 20px;
-    font-size: 32px;
-    border: none;
-    border-radius: 30px;
-    outline: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-}
-
-#player-input:focus {
-    box-shadow: 0 0 25px rgba(0, 123, 255, 0.9);
-}
-
+/* ===== Neymar Card ===== */
 .floating-glowing-3d-box {
   background-image: url('images/NEYMAR.png');
   background-size: cover;
@@ -93,44 +135,10 @@ header {
   width: 300px;
   height: 400px;
   border-radius: 16px;
-  position: relative; 
-  transform-style: preserve-3d
 
-    5px 5px 15px rgba(0, 0, 0, .5), 
-    5px 5px 15px rgba(0, 0, 0, 0.3), 
-    5px 5px 15px rgba(0, 0, 0, 0.3),
-    5px 5px 15px rgba(0, 0, 0, 0.3), 
- 
+  filter: drop-shadow(0 0 10px rgba(52, 152, 219, 0.8))
+          drop-shadow(0 0 20px rgba(52, 152, 219, 0.5));
 
-
-    15px 15px 30px rgba(0, 0, 0, 0.2),
-    15px 15px 30px rgba(0, 0, 0, 0.2),
-    15px 15px 30px rgba(0, 0, 0, 0.2),
-    15px 15px 30px rgba(0, 0, 0, 0.2),
-    15px 15px 30px rgba(0, 0, 0, 0.2),
-
-
-
-
-    25px 25px 50px rgba(0, 0, 0, 0.1),
-    25px 25px 50px rgba(0, 0, 0, 0.1),
-    25px 25px 50px rgba(0, 0, 0, 0.1),
-    25px 25px 50px rgba(0, 0, 0, 0.1),
-    25px 25px 50px rgba(0, 0, 0, 0.1),
-
-
-
-    35px 35px 70px rgba(0, 0, 0, .05),
-    35px 35px 70px rgba(0, 0, 0, .05),
-    35px 35px 70px rgba(0, 0, 0, .05),
-    35px 35px 70px rgba(0, 0, 0, .05),
-    35px 35px 70px rgba(0, 0, 0, .05);
-
-
-
-
-  filter: drop-shadow(0 0 10px rgba(52, 152, 219, 0.8)) 
-          drop-shadow(0 0 20px rgba(52, 152, 219, 0.5)); 
   animation:
     animation1 3s ease-in-out infinite alternate,
     animation2 3s ease-in-out infinite alternate;
@@ -142,15 +150,12 @@ header {
 }
 
 @keyframes animation2 {
-      0% { box-shadow: 0 0 10px rgb(230, 233, 230); }
-      50% { box-shadow: 0 0 20px rgba(5, 245, 85, 0.5); }
-      100% { box-shadow: 0 0 10px rgb(224, 2, 249); }
+  0% { box-shadow: 0 0 10px rgb(230, 233, 230); }
+  50% { box-shadow: 0 0 20px rgba(5, 245, 85, 0.5); }
+  100% { box-shadow: 0 0 10px rgb(224, 2, 249); }
 }
 
-
-
-
-
+/* ===== Glass Panel ===== */
 .glass-panel {
     width: 380px;
     height: 400px;
@@ -174,5 +179,10 @@ header {
         inset 0 0 20px rgba(255, 255, 255, 0.03);
 }
 
-
-
+#player-box {
+    margin: 30px auto;
+    width: 520px;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+}

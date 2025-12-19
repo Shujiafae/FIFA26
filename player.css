@@ -1,0 +1,60 @@
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:#0a0d0b;
+  color:#e8f2ec;
+}
+
+header{
+  padding:14px 16px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border-bottom:1px solid #1f2a24;
+}
+
+#back-btn{
+  padding:8px 12px;
+  background:#0f1f17;
+  border:1px solid #2ecc71;
+  color:#e8f2ec;
+  cursor:pointer;
+}
+
+#player-name{
+  font-weight:700;
+  letter-spacing:.5px;
+}
+
+#player-details,
+#game-box{
+  max-width:760px;
+  margin:16px auto;
+  padding:16px;
+  background:#0f1411;
+  border:1px solid #1f2a24;
+}
+
+#guess-input{
+  padding:10px;
+  background:#0a0d0b;
+  border:1px solid #1f2a24;
+  color:#e8f2ec;
+}
+
+#guess-btn{
+  padding:10px 14px;
+  margin-left:8px;
+  background:#2ecc71;
+  border:none;
+  color:#08120c;
+  font-weight:600;
+  cursor:pointer;
+}
+
+#game-msg{
+  margin-top:12px;
+  padding:10px;
+  background:#0a0d0b;
+  border-left:3px solid #2ecc71;
+}

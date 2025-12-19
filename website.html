@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Soccer Players</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
@@ -11,8 +11,18 @@
 
 <body>
   <header>
-    <input type="text" id="player-input" placeholder="Search player name">
-    <div id="dropdown" class="dropdown"></div>
+    <div class="search-container">
+      <input
+        type="text"
+        id="player-input"
+        placeholder="Search player name"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+      />
+      <div id="dropdown" class="dropdown"></div>
+    </div>
   </header>
 
   <div class="floating-glowing-3d-box"></div>
@@ -21,10 +31,12 @@
     <p class="italiano-text">A game you wont forget.</p>
   </div>
 
-  <div class="glass-panel">
- </div>
+  <div class="glass-panel"></div>
 
-  <table id="all-players"></table>
+  <!-- REMOVE THIS so no extra list shows up -->
+  <!-- <table id="all-players"></table> -->
+
+  <div id="player-box"></div>
 
   <script src="background.js"></script>
 </body>

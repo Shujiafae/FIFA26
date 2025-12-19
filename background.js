@@ -33,9 +33,10 @@ input.addEventListener('input', function () {
 
       (function(playerName) {
         option.addEventListener('click', function () {
-          showPlayer(playerName);
-          dropdown.innerHTML = '';
+          localStorage.setItem("selectedPlayerName", playerName);
+          window.location.href = "player.html";
         });
+
       })(playersData[i].Name);
 
       dropdown.appendChild(option);
