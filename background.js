@@ -1,79 +1,53 @@
-var playersData = [];
+document.addEventListener("DOMContentLoaded", function () {
 
-fetch('FIFA20.json')
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(data) {
-    playersData = data;
-  });
+  var playersData = []
 
-var input = document.getElementById('player-input');
-var dropdown = document.getElementById('dropdown');
-var playerBox = document.getElementById('player-box');
+  fetch("FIFA20.json")
+    .then(function(res){
+      return res.json()
+    })
+    .then(function(d){
+      playersData = d
+    })
+    .catch(function(){
+      console.log("json didnt load")
+    })
 
-input.addEventListener('input', function () {
-  var value = input.value.toLowerCase();
-  dropdown.innerHTML = '';
+  var input = document.getElementById("player-input")
+  var dropdown = document.getElementById("dropdown")
 
-  if (value === '') {
-    return;
+  if(!input || !dropdown){
+    console.log("input or dropdown missing")
+    return
   }
 
-  var matchesCount = 0;
-  var i;
+  input.addEventListener("input", function(){
+    var val = input.value.toLowerCase()
+    dropdown.innerHTML = ""
 
-  for (i = 0; i < playersData.length; i++) {
-    var nameLower = playersData[i].Name.toLowerCase();
+    if(val == "") return
 
-    if (nameLower.indexOf(value) !== -1) {
-      var option = document.createElement('div');
-      option.className = 'dropdown-item';
-      option.textContent = playersData[i].Name;
+    var shown = 0
 
-      (function(playerName) {
-        option.addEventListener('click', function () {
-          localStorage.setItem("selectedPlayerName", playerName);
-          window.location.href = "player.html";
-        });
+    for(var i=0;i<playersData.length;i++){
+      var name = playersData[i].Name.toLowerCase()
 
-      })(playersData[i].Name);
+      if(name.indexOf(val) !== -1){
+        var item = document.createElement("div")
+        item.className = "dropdown-item"
+        item.textContent = playersData[i].Name
 
-      dropdown.appendChild(option);
+        item.onclick = function(){
+          localStorage.setItem("selectedPlayerName", this.textContent)
+          window.location.href = "player.html"
+        }
 
-      matchesCount++;
-      if (matchesCount === 5) {
-        break; 
+        dropdown.appendChild(item)
+        shown++
+
+        if(shown >= 5) break
       }
     }
-  }
-});
+  })
 
-function showPlayer(playerName) {
-    playerBox.innerHTML = ''; 
-
-    var player = playersData.find(function(p) {
-        return p.Name === playerName;
-    });
-
-    if (player) {
-        var nameElem = document.createElement('h2');
-        nameElem.textContent = player.Name;
-
-        var clubElem = document.createElement('p');
-        clubElem.textContent = 'Club: ' + (player.Club || 'N/A'); 
-
-        var ratingElem = document.createElement('p');
-        ratingElem.textContent = 'Overall Rating: ' + (player.Overall || player.Rating || 'N/A');
-
-        playerBox.appendChild(nameElem);
-        playerBox.appendChild(clubElem);
-        playerBox.appendChild(ratingElem);
-        
-        input.value = '';
-
-    } else {
-        playerBox.innerHTML = '<p>Player not found.</p>';
-    }
-}
-
+})

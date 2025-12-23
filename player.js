@@ -9,32 +9,29 @@ backBtn.addEventListener("click", function () {
 });
 
 if (!playerName) {
-  nameElem.textContent = "No player selected";
-  details.innerHTML = "<p>Go back and select a player.</p>";
+  nameElem.textContent = "No player picked";
+  details.innerHTML = "<p>go back and choose someone</p>";
 } else {
   nameElem.textContent = playerName;
 
   fetch("FIFA20.json")
-    .then(function (res) {
-      return res.json();
-    })
+    .then(function (res) { return res.json(); })
     .then(function (data) {
-      var player = null;
+      var player;
 
       for (var i = 0; i < data.length; i++) {
-        if (data[i].Name === playerName) {
+        if (data[i].Name == playerName) {
           player = data[i];
-          break;
         }
       }
 
       if (!player) {
-        details.innerHTML = "<p>Player not found.</p>";
+        details.innerHTML = "<p>player not here</p>";
         return;
       }
 
       details.innerHTML =
-        "<p><b>Overall:</b> " + player.Overall + "</p>" +
+        "<p><b>Overall:</b> ?</p>" +
         "<p><b>Playstyle:</b> " + player.Playstyle + "</p>";
 
       startGame(player.Overall);
@@ -43,43 +40,80 @@ if (!playerName) {
 
 function startGame(correct) {
   var tries = 3;
+  var min = 0;
+  var max = 99;
+  var score = 100;
+  var hintUsed = false;
+  var done = false;
 
   var input = document.getElementById("guess-input");
   var button = document.getElementById("guess-btn");
+  var hint = document.getElementById("hint-btn");
   var msg = document.getElementById("game-msg");
+  var timerElem = document.getElementById("timer");
 
-  msg.textContent = "Tries left: " + tries;
+  msg.textContent = "range is 0 to 99 | tries: 3";
+  timerElem.textContent = "YOU HAVE ONE MINUTE TO GUESS THE CORRECT RATING";
 
-  button.addEventListener("click", function () {
-    if (tries <= 0) {
-      msg.textContent = "Game over. Correct was " + correct;
+  var timeLeft = 60;
+  var timer = setInterval(function () {
+    if (done) {
+      clearInterval(timer);
       return;
     }
+    timeLeft--;
+    timerElem.textContent = "time left: " + timeLeft + "s";
+    if (timeLeft <= 0) {
+      done = true;
+      msg.textContent = "Unfortunately, you ran out of time. answer was " + correct;
+      clearInterval(timer);
+    }
+  }, 1000);
 
+  hint.addEventListener("click", function () {
+    if (hintUsed || tries <= 0 || done) return;
+    hintUsed = true;
+    score -= 15;
+    msg.textContent = correct >= 75 ?
+      "Hint maybe: overall is 75+" :
+      "Hint maybe: overall is less than 75";
+  });
+
+  button.addEventListener("click", function () {
+    if (done) return;
     var guess = Number(input.value);
 
     if (input.value === "" || isNaN(guess)) {
-      msg.textContent = "Enter a valid number. Tries left: " + tries;
+      msg.textContent = "put a number";
+      return;
+    }
+    if (guess < min || guess > max) {
+      msg.textContent = "nah stay between " + min + " and " + max;
       return;
     }
 
-    if (guess < 0 || guess > 99) {
-      msg.textContent = "Guess must be 0–99. Tries left: " + tries;
-      return;
-    }
+    tries--;
+    score -= 20;
 
     if (guess === correct) {
-      msg.textContent = "Correct! You win.";
-      tries = 0;
+      done = true;
+      msg.textContent = "you got it. score " + score;
+      clearInterval(timer);
+      return;
+    }
+
+    if (guess < correct) min = guess + 1;
+    else max = guess - 1;
+
+    var diff = Math.abs(guess - correct);
+    var temp = diff <= 3 ? "very hot" : diff <= 7 ? "warm-ish" : "cold";
+
+    if (tries <= 0) {
+      done = true;
+      msg.textContent = "no tries left. it was " + correct;
+      clearInterval(timer);
     } else {
-      tries--;
-      if (tries === 0) {
-        msg.textContent = "Wrong. Game over. Correct was " + correct;
-      } else if (guess < correct) {
-        msg.textContent = "Too low. Tries left: " + tries;
-      } else {
-        msg.textContent = "Too high. Tries left: " + tries;
-      }
+      msg.textContent = temp + " | range " + min + "-" + max + " | tries " + tries;
     }
   });
 }
