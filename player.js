@@ -29,14 +29,10 @@ document.addEventListener("DOMContentLoaded", function() {
       return;
     }
 
-    // Show some player details
     details.innerHTML = `
-      <p>Position: ${player.Position}</p>
-      <p>Team: ${player.Team}</p>
       <p>Overall: ??? (guess this!)</p>
     `;
-
-    // Start the game using player's Overall rating
+    //start game I guess
     startGame(player.Overall);
 
     function startGame(correct) {
