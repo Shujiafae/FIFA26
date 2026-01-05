@@ -16,13 +16,28 @@ document.addEventListener("DOMContentLoaded", function() {
     nameElem.textContent = playerName;
 
     var data = window.playersData || [];
-    var player; // minimal fix: declare player
+    var player; 
 
     for (var i = 0; i < data.length; i++) {
       if (data[i].Name === playerName) {
         player = data[i];
       }
     }
+
+    if (!player) {
+      details.innerHTML = "<p>Player data not found</p>";
+      return;
+    }
+
+    // Show some player details
+    details.innerHTML = `
+      <p>Position: ${player.Position}</p>
+      <p>Team: ${player.Team}</p>
+      <p>Overall: ??? (guess this!)</p>
+    `;
+
+    // Start the game using player's Overall rating
+    startGame(player.Overall);
 
     function startGame(correct) {
       var tries = 3;
@@ -103,6 +118,5 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       });
     }
-
-  } 
-}); 
+  }
+});
