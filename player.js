@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", function () {
 var playerName = localStorage.getItem("selectedPlayerName");
 
 var nameElem = document.getElementById("player-name");
@@ -14,29 +15,15 @@ if (!playerName) {
 } else {
   nameElem.textContent = playerName;
 
-  fetch("FIFA20.json")
-    .then(function (res) { return res.json(); })
-    .then(function (data) {
-      var player;
+  var data = window.playersData || [];
 
-      for (var i = 0; i < data.length; i++) {
-        if (data[i].Name == playerName) {
-          player = data[i];
-        }
-      }
-
-      if (!player) {
-        details.innerHTML = "<p>player not here</p>";
-        return;
-      }
-
-      details.innerHTML =
-        "<p><b>Overall:</b> ?</p>" +
-        "<p><b>Playstyle:</b> " + player.Playstyle + "</p>";
-
-      startGame(player.Overall);
-    });
+  for (var i = 0; i < data.length; i++) {
+  if (data[i].Name === playerName) {
+    player = data[i];
+  }
 }
+
+
 
 function startGame(correct) {
   var tries = 3;
@@ -117,3 +104,5 @@ function startGame(correct) {
     }
   });
 }
+
+});
