@@ -1,17 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  var playersData = []
+  var playersData = window.playersData || []
 
-  fetch("FIFA20.json")
-    .then(function(res){
-      return res.json()
-    })
-    .then(function(d){
-      playersData = d
-    })
-    .catch(function(){
-      console.log("json didnt load")
-    })
 
   var input = document.getElementById("player-input")
   var dropdown = document.getElementById("dropdown")
